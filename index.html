@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honda Global Amity | Official Dealer</title>
+
+<style>
+:root{
+  --honda-red:#e60012;
+  --white:#fff;
+  --dark:#0f0f0f;
+  --text:#222;
+  --max-width:1320px;
+}
+
+/* RESET & BASE */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Helvetica Neue",Arial,sans-serif;scroll-behavior:smooth}
+body{color:var(--text);background:#fff;line-height:1.7}
+a{text-decoration:none;color:inherit}
+section{opacity:0; transform:translateY(40px); transition: all 0.8s ease-out;}
+
+/* ================= HEADER ================= */
+/* ================= HEADER ================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #e6e6e6;
+  padding: 2px 24px;
+  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
+}
+
+header.scrolled {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  backdrop-filter: blur(6px);
+  padding: 1px 24px;
+}
+
+/* NAV BAR */
+.nav {
+  max-width: var(--max-width);
+  margin: auto;
+  display: flex;                 /* Flex container */
+  align-items: center;
+  justify-content: space-between; /* Logo kiri, menu tengah */
+  padding: 0;
+}
+
+/* LOGO */
+.logo {
+  flex-shrink: 0; /* Logo tidak mengecil */
+}
+
+.logo img {
+  height: 60px;   /* Sesuaikan saiz logo */
+}
+
+/* MENU */
+.menu {
+  display: flex;
+  justify-content: center; /* center-kan menu */
+  gap: 36px;               /* jarak antara link */
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  flex: 1;                 /* occupy ruang tengah header */
+}
+
+/* MENU LINK STYLE */
+.menu a {
+  position: relative;
+  padding: 5px 0;
+  color: var(--dark);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Line merah bawah teks */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 3px;
+  background: var(--honda-red);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Hover effect */
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* Active link */
+.menu a.active::after {
+  width: 100%;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .menu{display:none} /* boleh tukar ikut menu mobile nanti */
+}
+/* ================= TOP BANNER ================= */
+#top-banner{
+  position:relative;
+  width:100%;
+  height:100vh; /* penuh viewport */
+  overflow:hidden;
+  background:#fff; /* putih sebenar */
+}
+
+#top-banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter: brightness(0.6); /* gelapkan gambar */
+}
+
+#top-banner .banner-overlay{
+  display:none; /* buang overlay kelabu */
+}
+
+#top-banner .banner-content{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  color:var(--white);
+  text-align:center;
+  max-width:1000px;
+  padding:0 15px;
+}
+
+#top-banner .banner-content h1{
+  font-size:3.5rem;
+  font-weight:800;
+  margin-bottom:20px;
+  text-shadow:0 4px 12px rgba(0,0,0,0.7);
+}
+
+#top-banner .banner-content p{
+  font-size:1.3rem;
+  line-height:1.6;
+  text-shadow:0 2px 6px rgba(0,0,0,0.7);
+  margin-bottom:30px;
+}
+
+#top-banner .banner-content .btn{
+  font-size:1rem;
+  padding:14px 40px;
+}
+
+@media(max-width:768px){
+  #top-banner .banner-content h1{
+    font-size:2rem;
+  }
+  #top-banner .banner-content p{
+    font-size:1rem;
+  }
+}
+/* EXTRA IMAGE BELOW BANNER */
+#banner-extra-image {
+  background: #fff; /* putih */
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#banner-extra-image .extra-banner-img {
+  width: 80%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+@media(max-width:768px){
+  #banner-extra-image .extra-banner-img{
+    width: 95%;
+  }
+}
+
+
+/* ================= HERO SLIDER ================= */
+.hero{
+  position: relative;
+  height:78vh;
+  overflow:hidden;
+}
+.slides{
+  position: relative;
+  width:100%;
+  height:100%;
+}
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:opacity 1s ease-in-out;
+}
+.slide.active{
+  opacity:1;
+}
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.hero-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -60%);
+  color:var(--white);
+  text-align:center;
+  font-size:2.2rem;
+  font-weight:700;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  opacity:0;
+  transition: all 1s ease;
+}
+.hero-text.active{
+  opacity:1;
+  transform:translate(-50%, -50%);
+}
+.dots{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:12px;
+}
+.dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.6);
+  cursor:pointer;
+  transition:background 0.3s;
+}
+.dot.active{
+  background:var(--honda-red);
+}
+
+/* ================= SECTIONS ================= */
+.our-services h2.line-title {
+  color: #000;            /* Hitam pekat */
+  font-weight: 800;       /* Bold */
+  font-size: 40px;        /* Saiz h2 */
+  text-align: center;     /* Tengah */
+  margin-bottom: 0px;    /* Jarak bawah */
+  padding: 0;             /* Tiada padding */
+  display: inline-block;  /* Supaya line bawah ikut panjang teks */
+}
+
+/* Garis merah di bawah */
+.our-services h2.line-title::after {
+  content: "";
+  display: block;
+  width: 60px;                 /* Panjang garis, boleh ubah */
+  height: 4px;                 /* Tebal garis */
+  background: linear-gradient(90deg, var(--honda-red), #ff5a5a);
+  margin: 12px auto 0;         /* Jarak atas & tengah */
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Optional: hover effect */
+.our-services h2.line-title:hover::after {
+  width: 100px;
+}
+section{
+  padding:90px 24px; 
+  scroll-margin-top:120px;
+  position: relative;
+  color: var(--text);
+  text-align:center;
+  background:rgba(255,255,255,0.05);
+}
+.container{max-width:var(--max-width);margin:auto;text-align:center}
+
+/* ================= TITLES ================= */
+h2{
+  font-size:36px;
+  font-weight:800;
+  margin-bottom:40px;
+  letter-spacing:1px;
+  line-height:1.3;
+  position:relative;
+  display:inline-block;
+  padding:12px 25px;
+  border-radius:8px;
+  background: rgba(255,255,255,0.85);
+  color: var(--text);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+h2::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:4px;
+  background: linear-gradient(90deg, var(--honda-red), #ff5a5a);
+  margin:12px auto 0;
+  border-radius:2px;
+  transition: width 0.3s ease;
+}
+h2:hover{
+  transform:translateY(-3px);
+  box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+h2:hover::after{
+  width:100px;
+}
+
+/* ================= BUTTONS ================= */
+.btn{
+  display:inline-block;
+  padding:16px 42px;
+  background:var(--honda-red);
+  color:var(--white);
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:.5px;
+  margin:10px;
+  border-radius:6px;
+  transition:.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.btn:hover{
+  background:#b8000f; 
+  transform:translateY(-3px); 
+  box-shadow: 0 6px 20px rgba(230,0,18,0.6), 0 0 20px rgba(230,0,18,0.4) inset;
+}
+.btn.outline{
+  background:transparent;
+  border:2px solid var(--honda-red);
+  color:var(--white);
+}
+.btn.outline:hover{
+  background:var(--honda-red);
+  color:#fff;
+  transform:translateY(-3px);
+  box-shadow: 0 6px 20px rgba(230,0,18,0.6), 0 0 20px rgba(230,0,18,0.4) inset;
+}
+
+/* ================= GRID & CARDS ================= */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.card{
+  padding:25px 20px;
+  display:flex;
+  justify-content:center;
+  transition:transform 0.3s, box-shadow 0.3s;
+}
+.card:hover{
+  transform:translateY(-5px); 
+  box-shadow:0 10px 18px rgba(0,0,0,0.25);
+}
+
+/* ================= BACKGROUNDS ================= */
+#sales{background: url('sales.png') center/cover no-repeat;}
+#services{background: url('service.png') center/cover no-repeat;}
+#spareparts{background: url('sparepart.png') center/cover no-repeat;}
+#customer{background: url('customer.png') center/cover no-repeat;}
+#facilities{background: url('facilities.png') center/cover no-repeat;}
+#contact{background: url('contact.png') center/cover no-repeat;}
+/* ================= BACKGROUNDS DARKEN ================= */
+#sales, #services, #spareparts {
+  position: relative;
+  color: #fff; /* ubah tulisan menjadi putih */
+}
+
+#sales::before,
+#services::before,
+#spareparts::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.35); /* overlay gelap */
+  z-index: 0;
+}
+
+#sales .container,
+#services .container,
+#spareparts .container {
+  position: relative;
+  z-index: 1; /* pastikan konten di atas overlay */
+}
+
+/* ================= H2 TITLES ================= */
+#sales h2,
+#services h2,
+#spareparts h2 {
+  background: none; /* buang kotak putih */
+  color: #fff;       /* tajuk jadi putih */
+  text-shadow: 0 3px 10px rgba(0,0,0,0.6); /* pastikan terbaca di atas background gelap */
+}
+
+/* CENTER BUTTONS */
+#sales .grid-3,#services .grid-3,#spareparts .grid-3,
+#customer .grid-3,#facilities .grid-3{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* BUTTON TEXT SHADOW */
+#sales .card a,#services .card a,#spareparts .card a,
+#customer .card a{
+  text-shadow: 0 3px 6px rgba(0,0,0,0.6);
+  font-weight:600;
+}
+
+/* FACILITIES */
+.facilities{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:20px; /* asal 30px → rapatkan sikit antara item */
+}
+
+.facility img{
+  width:180px;        /* BESARKAN gambar (asal 100px) */
+  margin-bottom:-40px;  /* RAPATKAN teks dgn gambar */
+}
+
+.facility p{
+  margin-top:0;       /* buang margin default <p> */
+  color:#000;
+  font-weight:600;
+  font-size:16px;
+  text-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+/* BRANCHES */
+.branches-row{display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:40px;}
+.branch-block{
+  padding:25px;
+  background:#red;  
+  border:2px solid #000;;
+  border-radius:12px;
+  color:#000;     
+  transition:transform 0.3s, box-shadow 0.3s;
+  
+}
+.branch-block:hover{transform:translateY(-6px);box-shadow:0 12px 20px rgba(0,0,0,0.25);}
+.branch-block h3{margin-bottom:20px; font-size:20px; color: #000;; text-shadow: 0 2px 6px rgba(0,0,0,0.6);}
+.branch-block img{width:60px;}
+
+/* FOOTER */
+footer {
+  background: #000000;      /* Tukar background jadi hitam */
+  color: #ffffff;           /* Tulisan putih */
+  font-weight: 700;         /* Bold pekat */
+  text-align: center;
+  padding: 20px 20px;
+  font-size: 14px;
+  letter-spacing: .5px;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .facilities{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:768px){
+  .menu{display:none}
+  h2{font-size:28px; padding:8px 16px;}
+  .hero{height:60vh}
+  .grid-3{grid-template-columns:1fr}
+  .facilities{grid-template-columns:repeat(2,1fr)}
+  .branches-row{flex-direction:column; gap:30px;}
+}
+
+/* ANIMASI TAJUK PREMIUM */
+h2.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.8s ease-out;
+}
+h2.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav">
+    <div class="logo" style="max-width:1320px; align-items:center; gap:12px;">
+      <img src="logoglobal.png" alt="Honda Logo" style="height:150px; width:150px;">
+    </div>
+    <nav class="menu">
+      <a href="models.html">Models</a>
+      <a href="service-maintenance.html">Service & Maintenance</a>
+      <a href="https://www.honda.com.my/discover/honda-insurance-plus" target="_blank">Insurance</a>
+      <a href="career.html">Career</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="https://www.honda.com.my/happenings" target="_blank">Happenings</a>
+       <a href="landingpage.html" target="_blank">Review Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- TOP BANNER -->
+<section id="top-banner">
+  <img src="bangi.png" alt="Honda Banner">
+  <div class="banner-content">
+    <h1>3S Honda Dealership</h1>
+    <p>22 years of experience in providing<br>sales, services, supplies spare parts & insurance<br>100% Bumiputera.</p>
+    <a class="btn" href="service-maintenance.html">Book Service Appointment</a>
+  
+  </div>
+</section>
+<section id="banner-extra-image">
+  <div class="container">
+    <img src="22year.png" alt="Extra Banner" class="extra-banner-img">
+  </div>
+</section>
+
+<!-- HERO SLIDER -->
+<div class="hero">
+  <div class="slides">
+    <div class="slide slide1 active"><img src="crv.png" alt="Honda Malaysia Experience" loading="lazy"></div>
+    <div class="slide slide2"><img src="hrv.png" alt="Innovation That Moves You" loading="lazy"></div>
+    <div class="slide slide3"><img src="civic.png" alt="The Power of Dreams" loading="lazy"></div>
+    <div class="slide slide4"><img src="happening.png" alt="Happenings" loading="lazy"></div>
+  </div>
+  <div class="dots">
+    <span class="dot active" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
+    <span class="dot" onclick="goToSlide(3)"></span>
+  </div>
+</div>
+<!-- OUR SERVICES TITLE -->
+<section class="our-services">
+  <div class="container">
+    <h2 class="line-title">Our Services</h2>
+  </div>
+</section>
+<!-- SALES -->
+<section id="sales">
+  <div class="container">
+    <h2 class="reveal">Sales</h2>
+    <div class="grid-3">
+      <div class="card"><a class="btn" href="https://www.google.com/maps/place/Honda+Global+Amity+Bangi+3S+Center/@2.9555169,101.7522773,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdca2cbfe651a1:0xc736d75e0a4b6fa6!8m2!3d2.9555115!4d101.7548522!16s%2Fg%2F11f03jn5sv?entry=ttu&g_ep=EgoyMDI2MDEyNi4wIKXMDSoASAFQAw%3D%3D">Bangi Showroom Direction</a></div>
+      <div class="card"><a class="btn" href="https://www.google.com/maps/place/Honda+Global+Amity+Nilai/@2.8359527,101.8055586,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdc69970688cd1:0xd236e87152f27e79!8m2!3d2.8359473!4d101.8081335!16s%2Fg%2F11b8v86tmm?entry=ttu&g_ep=EgoyMDI2MDEyNi4wIKXMDSoASAFQAw%3D%3D">Nilai Showroom Direction</a></div>
+      <div class="card"><a class="btn" href="SALES ASSIST.html">Sales Advisor Assistance</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <h2 class="reveal">Services</h2>
+    <div class="grid-3">
+      <div class="card"><a class="btn" href="service-maintenance.html">Book Service Appointment</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPARE PARTS -->
+<section id="spareparts">
+  <div class="container">
+    <h2 class="reveal">Spare Parts</h2>
+    <div class="grid-3">
+      <!-- Tukar class btn outline ke btn sahaja -->
+      <div class="card"><a class="btn" href="https://www.honda.com.my/service_maintenance/genuine_parts">Read More</a></div>
+    </div>
+  </div>
+</section>
+<!-- CUSTOMER RELATIONS -->
+<section id="customer">
+  <div class="container">
+    <h2 class="reveal">Talk To Our Customer Relations</h2>
+    <div style="margin-top:20px;">
+      <a class="btn" href="SALES ASSIST.html">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section id="facilities">
+  <div class="container">
+    <h2 class="reveal">Our Facilities</h2>
+    <div class="facilities">
+      <div class="facility"><img src="surau2.png" loading="lazy"><p>Surau</p></div>
+      <div class="facility"><img src="cafe.png" loading="lazy"><p>Café</p></div>
+      <div class="facility"><img src="insurance.png" loading="lazy"><p>Insurance</p></div>
+      <div class="facility"><img src="showroom.png" loading="lazy"><p>Showroom</p></div>
+      <div class="facility"><img src="wifi.png" loading="lazy"><p>WiFi</p></div>
+      <div class="facility"><img src="kids.png" loading="lazy"><p>Kids Play Room</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GET IN TOUCH -->
+<section id="contact">
+  <div class="container">
+    <h2 class="reveal">Get In Touch</h2>
+    <div class="branches-row">
+      
+      <!-- Branch Bangi -->
+      <div class="branch-block">
+        <img src="bangi.png" alt="Bangi Branch Icon" style="width:500px; margin-bottom:15px;">
+        <h3>Global Amity Bangi</h3>
+        <div style="margin:20px 0;color:#black;">
+          <a class="btn" href="tel:1300888300">Hotline 1300 888 300</a>
+        </div>
+        <div style="display:flex; justify-content:center; gap:15px; margin-bottom:20px;">
+          <a href="#"><img src="ws2.png" alt="WhatsApp"></a>
+          <a href="https://www.instagram.com/"><img src="ig.png" alt="Instagram"></a>
+          <a href="#"><img src="fb.png" alt="Facebook"></a>
+        </div>
+        <div style="text-align:center;">
+          <a class="btn" href="https://www.google.com/maps/place/Honda+Global+Amity+Bangi+3S+Center/@2.9555169,101.7522773,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdca2cbfe651a1:0xc736d75e0a4b6fa6!8m2!3d2.9555115!4d101.7548522!16s%2Fg%2F11f03jn5sv?entry=ttu&g_ep=EgoyMDI2MDEyNi4wIKXMDSoASAFQAw%3D%3D">Location</a>
+        </div>
+      </div>
+      
+      <!-- Branch Nilai -->
+      <div class="branch-block">
+        <img src="nilai.png" alt="Nilai Branch Icon" style="width:500px; margin-bottom:15px;">
+        <h3>Global Amity Nilai</h3>
+        <div style="margin:20px 0;">
+          <a class="btn" href="tel:1300888300">Hotline 1300 888 300</a>
+        </div>
+        <div style="display:flex; justify-content:center; gap:15px; margin-bottom:20px;">
+          <a href="#"><img src="ws2.png" alt="WhatsApp"></a>
+          <a href="#"><img src="ig.png" alt="Instagram"></a>
+          <a href="#"><img src="fb.png" alt="Facebook"></a>
+        </div>
+        <div style="text-align:center;">
+          <a class="btn" href="https://www.google.com/maps/place/Honda+Global+Amity+Nilai/@2.8359527,101.8055586,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdc69970688cd1:0xd236e87152f27e79!8m2!3d2.8359473!4d101.8081335!16s%2Fg%2F11b8v86tmm?entry=ttu&g_ep=EgoyMDI2MDEyNi4wIKXMDSoASAFQAw%3D%3D">Location</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © Honda Global Amity 2026. All Rights Reserved.
+</footer>
+
+<script>
+// HERO SLIDER
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index) {
+  slides.forEach((slide, i) => slide.classList.toggle('active', i===index));
+  dots.forEach((dot, i) => dot.classList.toggle('active', i===index));
+}
+
+setInterval(()=> {
+  currentSlide = (currentSlide +1) % slides.length;
+  showSlide(currentSlide);
+},4000);
+
+function goToSlide(index){
+  currentSlide = index;
+  showSlide(currentSlide);
+}
+
+// HEADER / FOOTER TRANSPARENT ON SCROLL
+const header = document.querySelector('header');
+const footer = document.querySelector('footer');
+
+window.addEventListener('scroll', ()=> {
+  if(window.scrollY > 50){
+    header.classList.add('scrolled');
+    // Hanya tambah blur pada footer tanpa ubah warna
+    footer.style.backdropFilter = 'blur(4px)';
+  } else {
+    header.classList.remove('scrolled');
+    footer.style.backdropFilter = 'none';
+  }
+});
+
+
+// SCROLL REVEAL SECTIONS & TAJUK
+const sections = document.querySelectorAll('section');
+const reveal = () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.style.opacity = 1;
+      sec.style.transform = 'translateY(0)';
+      const h2 = sec.querySelector('h2.reveal');
+      if(h2) h2.classList.add('active');
+    }
+  });
+};
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honda Global Amity | About Us</title>
+<style>
+:root{
+  --honda-red:#e60012;
+  --white:#fff;
+  --dark:#0f0f0f;
+  --text:#222;
+  --max-width:1320px;
+}
+
+/* RESET & BASE */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Helvetica Neue",Arial,sans-serif;scroll-behavior:smooth}
+body{color:var(--text);background:#fff;line-height:1.7}
+a{text-decoration:none;color:inherit}
+section{opacity:0; transform:translateY(40px); transition: all 0.8s ease-out;}
+
+/* HEADER */
+header {position: sticky;top: 0;z-index: 1000;background: rgba(255,255,255,0.95);border-bottom: 1px solid #e6e6e6;padding: 2px 24px;transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;}
+header.scrolled {background: rgba(255,255,255,0.2);box-shadow: 0 2px 12px rgba(0,0,0,0.1);backdrop-filter: blur(6px);padding: 1px 24px;}
+.nav {max-width: var(--max-width);margin: auto;display: flex;align-items: center;justify-content: space-between;padding: 0;}
+.logo {flex-shrink: 0;}
+.logo img {height: 150 px; width:150px;}
+.menu {display: flex;justify-content: center;gap: 36px;font-size: 14px;font-weight: 600;letter-spacing: .5px;flex: 1;}
+.menu a {position: relative;padding: 5px 0;color: var(--dark);text-decoration: none;transition: color 0.3s;}
+.menu a::after {content: "";position: absolute;left: 0;bottom: -2px;width: 0;height: 3px;background: var(--honda-red);border-radius: 2px;transition: width 0.3s ease;}
+.menu a:hover::after, .menu a.active::after {width: 100%;}
+
+/* ABOUT US */
+.about-container{max-width:var(--max-width);margin:auto;padding:50px 24px;text-align:center;}
+.corporate-history p{max-width:900px;margin:20px auto;font-size:16px;line-height:1.6;color:var(--text);opacity:0; transform:translateY(20px); transition:all 0.8s ease;}
+
+.red-boxes{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:50px 0;}
+.red-box {
+  flex:1;
+  min-width:280px;
+  padding:30px;
+  border:2px solid var(--honda-red);
+  border-radius:12px;
+  background:rgba(255,0,0,0.05);
+  text-align:center;
+  transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
+  cursor:pointer;
+  opacity:0; 
+  transform:translateY(30px);
+}
+.red-box h3{
+  font-size:24px;
+  color:var(--honda-red);
+  margin-bottom:15px;
+}
+.red-box p{
+  font-size:16px;
+  line-height:1.6;
+  color:var(--text);
+  margin:0 auto;
+}
+.red-box:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 25px rgba(0,0,0,0.3);
+  background:linear-gradient(135deg, rgba(230,0,18,0.1), rgba(255,0,50,0.1));
+}
+
+/* Key People */
+.key-people{margin:50px 0;}
+.key-people h2{margin-bottom:40px;}
+.people-grid{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+.person{flex:1;min-width:200px;text-align:center;opacity:0; transform:translateY(30px); transition: all 0.6s ease;}
+.person img{width:100%;height:auto;border-radius:12px;box-shadow:0 6px 15px rgba(0,0,0,0.2);transition: transform 0.4s, box-shadow 0.4s;}
+.person h4{margin-top:10px;font-size:18px;font-weight:600;color:var(--text);transition: transform 0.4s, color 0.4s;}
+.person p{
+  margin-top:8px;
+  font-size:14px;
+  color:#555; 
+  line-height:1.5;
+  text-align: left; /* kiri */
+}
+.person:hover img{transform: scale(1.05); box-shadow:0 20px 30px rgba(0,0,0,0.4);}
+.person:hover h4{transform: translateY(-5px); color:var(--honda-red);}
+
+/* H2 TITLES */
+h2.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.8s ease-out;
+}
+h2.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+/* Branch images */
+.branch-img {
+  width: 100%;
+  height: 200px; /* boleh adjust ikut kehendak */
+  object-fit: contain; /* pastikan gambar masuk dalam kotak */
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* Sosial icon kecil */
+.social-icon {
+  width: px;
+  height: 10px;
+  object-fit: contain;
+}
+
+/* BRANCHES */
+#branches {max-width:var(--max-width); margin:50px auto; padding:0 24px; text-align:center;}
+.branches-row {display:flex; justify-content:center; gap:30px; flex-wrap:wrap;}
+.branch-block {flex:1; min-width:280px; max-width:400px; padding:20px; border:2px solid var(--honda-red); border-radius:12px; background:rgba(230,0,18,0.05); text-align:center; transition: transform 0.4s, box-shadow 0.4s;}
+.branch-block img {width:100%; height:auto; border-radius:12px; margin-bottom:15px;}
+.branch-block h3 {color:var(--honda-red); margin-bottom:15px;}
+.branch-block .btn {display:inline-block; padding:10px 20px; background:var(--honda-red); color:#fff; border-radius:8px; margin-bottom:10px;}
+.branch-block:hover {transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+@media(max-width:768px){.branches-row{flex-direction:column; gap:30px;}}
+
+
+/* FOOTER */
+footer {background: #000;color: #fff;font-weight: 700;text-align: center;padding: 20px 20px;font-size: 14px;letter-spacing: .5px;transition: background 0.3s, backdrop-filter 0.3s;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .red-boxes{flex-direction:column;gap:30px;}
+  .people-grid{flex-direction:column;gap:30px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav">
+    <div class="logo"><img src="logoglobal.png" alt="Honda Logo"></div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="models.html">Models</a>
+      <a href="service-maintenance.html">Service & Maintenance</a>
+      <a href="https://www.honda.com.my/discover/honda-insurance-plus" target="_blank">Insurance</a>
+      <a href="career.html">Career</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="https://www.honda.com.my/happenings" target="_blank">Happenings</a>
+      <a href="file:///C:/Users/Lenovo/Documents/honda/landingpage.html" target="_blank">Review Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ABOUT US SECTION -->
+<section class="about-container">
+  <!-- Corporate History -->
+  <h2 class="reveal">Corporate History</h2>
+  <div class="corporate-history">
+    <p>Global Amity Sdn Bhd (GASB) is a private limited company incorporated in Malaysia on December 24, 2002 under the Companies Act of 1965. GASB started its operations on September 1, 2003. GASB is a leading authorized Honda dealership providing sales, services, and supplies spare parts for Honda cars. Initially GASB started its operations in Seri Kembangan. Later in 2012, GASB opened its flagship 3S dealership in Bangi. Since opening its doors, GASB has received numerous awards and commendations from Honda Malaysia, most notably the Best National Dealer award in 2006 and the Best Central Region Dealer award in 2010.</p>
+  </div>
+
+  <!-- Our Vision & Mission -->
+  <div class="red-boxes">
+    <div class="red-box">
+      <h3>Our Vision</h3>
+      <p>To be the No.1 Honda Dealership Group in Malaysia in Sales and Services volume by 2023.</p>
+    </div>
+    <div class="red-box">
+      <h3>Our Mission</h3>
+      <p>To offer innovative and professional services.<br>
+         To offer sales, services, and supply spare parts and accessories in the motoring industry.</p>
+    </div>
+  </div>
+
+  <!-- Key People -->
+  <div class="key-people">
+    <h2 class="reveal">Key People</h2>
+    <div class="people-grid">
+      <div class="person">
+        <img src="Aziz.png" alt="Aziz Baharum">
+        <p>Aziz Baharum started his own trading company, Gua Musang Sdn Bhd that acted as an agent on behalf of the Ministry of Defence in 1985. Later he became a director and shareholder of HAK Ostasia (M) Sdn Bhd, supplying printing machinery and equipment for the New Straits Times Press (1995-2003). Currently, he is the Chairman for Global Amity as well as Diamonds Oasis Sdn Bhd.</p>
+      </div>
+      <div class="person">
+        <img src="Azri.png" alt="Jane Smith">
+        <p>HAzri Aziz was appointed to the board as a Director of Operations in June 2006. 
+
+By early 2013, he took the role as Chief  Executive Officer of Global Amity. He graduated with a BA (Hons) in  accounting and Finance at London South Bank University,  United Kingdom (U.K.). 
+
+He also holds an MSc in Management from Cass Business School – City University London, U.K.</p>
+      </div>
+      <div class="person">
+        <img src="Mazuin.png" alt="Ali Ahmad">
+        <p>Mazuin Aziz graduated with a BA (Hons) in Accounting and Finance and an MSc in Accounting and Finance from London South Bank University, U.K. 
+
+She is a member of the Chartered Association of Certified Accountants (U.K.) and has over a decade of business experience in the accounting and financial field. 
+
+She is currently the Chief Financial Officer of Global Amity.</p>
+      </div>
+
+    </div>
+<!-- Management Team -->
+<div class="key-people">
+  <h2 class="reveal">Management Team</h2>
+  <div class="people-grid">
+      <div class="person">
+        <img src="zul.png" alt="Aziz Baharum">
+<p>Graduated with a Diploma in Business Administration from Kuala Lumpur International University College.
+
+Joined Global Amity in June 2013 covering numerous departments to now Dealer Principal – Nilai,  in Nilai Impian.
+
+Prior to joining Global Amity, he was part of Customer Relations team for the After Sales division in BMW Auto Bavaria.</p>
+
+
+    </div>
+    <div class="person">
+      <img src="nazrul.png" alt="Management Team 2">
+<p>Holds a LLB (Hons) degree from the University of Hertfordshire, UK and a Certificate in Legal Practice from University Malaya.
+
+Joined GA in Oct 2018 as Head of Business Development
+
+More than 12 years experience in the automotive industry with corporate experience in various brands, e.g.- Skoda, Mercedes-Benz, Changan, Mazda, and Aston Martin.
+
+Prior to automotive sector he had 10 years experience in IT and Banking..</p>
+    </div>
+
+ <div class="people-grid bottom-row" style="justify-content:center; gap:20px;">
+    <div class="person" style="flex:1 1 250px; max-width:300px;">
+      <img src="azalan.png" alt="Team Member 1">
+      <p>Graduated with a First Class Diploma in Business Management from UTM Space Kuala Lumpur.
+
+Joined Global Amity in June 2014 as Assistant Head of After Sales and now becoming a Head of After Sales – Bangi managing car services & maintenance.
+
+Prior to joining Global Amity, he has more than ten years of experience in the automotive After Sales division with notable brands and dealerships.</p>
+    </div>
+    <div class="person" style="flex:1 1 250px; max-width:300px;">
+      <img src="helmi.png" alt="Team Member 2">
+      <p>Holds Bachelor of Engineering (Mechanical-Automotive) from Universiti Teknologi Malaysia and a Diploma in Automotive Technology from The Otomotif College.
+
+Joined Global Amity in April 2019 as Head of After Sales Nilai,  in Nilai Impian.
+
+Prior joining Global Amity, he was involved in few automotive brands at both Principal and Dealership level focusing on After Sales processes and operations.</p>
+    </div>
+    <div class="person" style="flex:1 1 250px; max-width:300px;">
+      <img src="hairul.png" alt="Team Member 3">
+      <p>Graduated with a Diploma in Automotive Engineering from Federal Institute of Technology, Kuala Lumpur
+
+Joined Global Amity in December 2011 as an Advisor to the Business Development team Now Head of Parts & Warranty managing Honda genuine parts & warranty.
+
+Prior to joining Global Amity, he was with Proton Eon, Toyota, and Automobile Association of Malaysia</p>
+    </div>
+  <<div class="people-grid bottom-row" style="justify-content:center; gap:20px;">
+    <div class="person" style="flex:1 1 250px; max-width:300px;">
+      <img src="wani.png" alt="Team Member 1">
+      <p>Graduated with a 1st class diploma in accountancy and graduated with degree at University Putra Malaysia in accountancy.
+
+Joined Global Amity in June 2016 as junior accountant. She then led the team as Team Leader of Finance, in January 2019 taking on the role as Head of Finance.
+
+Prior to joining Global Amity, she has 1 year of experience in offshore company as junior executive.</p>
+    </div>
+    <div class="person" style="flex:1 1 250px; max-width:300px;">
+      <img src="faridah.png" alt="Team Member 2">
+      <p>Graduated with a BA (Hons) in Business Administrator majoring in Human Resource Management.
+
+Joined Global Amity in 2011 as Head of Human Resource (HR) & Administration managing all HR and Facilities Management matters.
+
+Prior to joining Global Amity, she has numerous years of experience in HR management under property development and construction industries.</p>
+    </div>
+    <div class="person" style="flex:1 1 250px; max-width:300px;">
+      <img src="faiq.png" alt="Team Member 3">
+      <p>Graduated with a degree in Bachelor of Computer Science (Computer Network)
+from University Putra Malaysia (UPM).
+
+Joined Global Amity in 2014 as IT Executive and now becoming a Head of Information & Technology managing IT Department Bangi and Nilai.
+
+Prior to joining Global Amity, he has more than 8 years of experience in technical consulting, datacenter, software developer, project management, database, cyber security, open source, network security, server and networking in the Information technology industry covering ASEAN countries.</p>
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+<!-- GET IN TOUCH -->
+<section id="contact">
+  <div class="container">
+   
+    <div class="branches-row">
+      
+      <!-- Branch Bangi -->
+      <div class="branch-block">
+        <img src="bangi.png" alt="Bangi Branch Icon" class="branch-img">
+        <h3>Global Amity Bangi</h3>
+        <div style="margin:20px 0;color:#000;">
+          <a class="btn" href="tel:1300888300">Hotline 1300 888 300</a>
+        </div>
+        <div style="display:flex; justify-content:center; gap:15px; margin-bottom:20px;">
+          <a href="#"><img src="ws2.png" alt="WhatsApp" class="social-icon"></a>
+          <a href="https://www.instagram.com/"><img src="ig.png" alt="Instagram" class="social-icon"></a>
+          <a href="#"><img src="fb.png" alt="Facebook" class="social-icon"></a>
+        </div>
+        <div style="text-align:center;">
+          <a class="btn" href="https://www.google.com/maps/place/Honda+Global+Amity+Bangi+3S+Center/">Location</a>
+        </div>
+      </div>
+      
+      <!-- Branch Nilai -->
+      <div class="branch-block">
+        <img src="nilai.png" alt="Nilai Branch Icon" class="branch-img">
+        <h3>Global Amity Nilai</h3>
+        <div style="margin:20px 0;">
+          <a class="btn" href="tel:1300888300">Hotline 1300 888 300</a>
+        </div>
+        <div style="display:flex; justify-content:center; gap:15px; margin-bottom:20px;">
+          <a href="#"><img src="ws2.png" alt="WhatsApp" class="social-icon"></a>
+          <a href="#"><img src="ig.png" alt="Instagram" class="social-icon"></a>
+          <a href="#"><img src="fb.png" alt="Facebook" class="social-icon"></a>
+        </div>
+        <div style="text-align:center;">
+          <a class="btn" href="https://www.google.com/maps/place/Honda+Global+Amity+Nilai/">Location</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © Honda Global Amity 2026. All Rights Reserved.
+</footer>
+
+<script>
+// HEADER SCROLL
+const header = document.querySelector('header');
+window.addEventListener('scroll', ()=> {
+  if(window.scrollY > 50) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
+
+// SCROLL REVEAL
+const sections = document.querySelectorAll('section, .key-people');
+const revealElements = () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.style.opacity = 1;
+      sec.style.transform = 'translateY(0)';
+      // reveal paragraph
+      const p = sec.querySelectorAll('p');
+      p.forEach((el,i)=> setTimeout(()=>{el.style.opacity=1; el.style.transform='translateY(0)';}, i*150));
+      // reveal red boxes
+      const boxes = sec.querySelectorAll('.red-box');
+      boxes.forEach((el,i)=> setTimeout(()=>{el.style.opacity=1; el.style.transform='translateY(0)';}, i*150));
+      // reveal people
+      const people = sec.querySelectorAll('.person');
+      people.forEach((el,i)=> setTimeout(()=>{el.style.opacity=1; el.style.transform='translateY(0)';}, i*200));
+      // reveal h2
+      const h2 = sec.querySelector('h2.reveal');
+      if(h2) h2.classList.add('active');
+    }
+  });
+};
+window.addEventListener('scroll', revealElements);
+window.addEventListener('load', revealElements);
+</script>
+
+</body>
+</html>

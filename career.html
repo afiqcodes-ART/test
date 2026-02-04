@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honda Global Amity | Career</title>
+<style>
+:root{
+  --honda-red: #e60012;
+  --white: #fff;
+  --dark: #0f0f0f;
+  --text: #222;
+  --max-width: 1320px;
+  --transition: 0.4s ease;
+}
+
+/* RESET & BASE */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+body{
+  color: var(--text);
+  background: #fff;
+  line-height: 1.7;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+section{
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+/* HEADER */
+header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  border-bottom: 1px solid #e6e6e6;
+  padding: 2px 24px;
+  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
+}
+header.scrolled{
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  backdrop-filter: blur(6px);
+  padding: 1px 24px;
+}
+.nav{
+  max-width: var(--max-width);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+.logo img{
+  height: 150px;
+width:150px;
+
+}
+.menu{
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  flex: 1;
+}
+.menu a{
+  position: relative;
+  padding: 5px 0;
+  color: var(--dark);
+  transition: color 0.3s;
+}
+.menu a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 3px;
+  background: var(--honda-red);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.menu a:hover::after, .menu a.active::after{
+  width: 100%;
+}
+
+/* CAREER PAGE STYLING */
+.career-container{
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 60px 24px;
+  text-align: center;
+}
+.career-container h1{
+  font-size: 48px;
+  color: var(--honda-red);
+  margin-bottom: 40px;
+  position: relative;
+}
+.career-container h1::after{
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--honda-red);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+.career-container .btn{
+  display: inline-block;
+  padding: 15px 40px;
+  background: var(--honda-red);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 60px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.career-container .btn:hover{
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.career-section{
+  margin-bottom: 40px;
+  text-align: left;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #f9f9f9;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.career-section:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+.career-section h2{
+  color: var(--honda-red);
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+.career-section h3{
+  color: var(--dark);
+  margin: 15px 0 10px;
+}
+.career-section p{
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.career-section ol{
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer{
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  padding: 25px 20px;
+  font-size: 14px;
+  letter-spacing: .5px;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .career-container h1{font-size:36px;}
+  .career-section h2{font-size:24px;}
+  .menu{gap: 18px; font-size: 13px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav">
+    <div class="logo"><img src="logoglobal.png" alt="Honda Logo"></div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="models.html">Models</a>
+      <a href="service-maintenance.html">Service & Maintenance</a>
+      <a href="https://www.honda.com.my/discover/honda-insurance-plus" target="_blank">Insurance</a>
+      <a href="#career">Career</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="https://www.honda.com.my/happenings" target="_blank">Happenings</a>
+      <a href="file:///C:/Users/Lenovo/Documents/honda/landingpage.html" target="_blank">Review Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CAREER SECTION -->
+<section class="career-container" id="career">
+  <h1>Career</h1>
+  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfxOqsIOdNQ2f6C9koZAl4HGCi_tyQV1r-bpPM3dZxnx4M31Q/viewform">Apply Now</a>
+
+  <div class="career-section">
+    <h2>JOIN US NOW</h2>
+    <p>We are looking for highly motivated, enthusiastic, and hard-working individuals to join our dynamic team and embark on a journey of success.</p>
+  </div>
+
+  <div class="career-section">
+    <h2>WHY WORK WITH US</h2>
+    <p>At Global Amity, we nurture autonomy and independent thinking, while providing opportunities to excel in a collaborative, team-based environment. Join an elite team delivering top-notch services to our customers.</p>
+  </div>
+
+  <div class="career-section">
+    <h2>WORK ENVIRONMENT</h2>
+    <p>We provide a supportive working environment where you can set clear career objectives. Progression is determined by your ability to develop innovative solutions, achieve high performance, and contribute to sustainable business growth.</p>
+  </div>
+</section>
+
+<!-- POSITIONS SECTION -->
+<section class="career-container" id="positions">
+  <h1>Positions</h1>
+
+  <!-- Technician -->
+  <div class="career-section">
+    <h2>Technician</h2>
+    <h3>Job Descriptions</h3>
+    <ol>
+      <li>Conduct repair work with known repair methods at reception time</li>
+      <li>Conduct overhaul and trouble-shooting of vehicles</li>
+      <li>Perform air-conditioning repair upon customer complaint</li>
+      <li>Perform tire changing, tire balancing & wheel alignment job</li>
+      <li>Co-ordinate with foreman when an additional job is identified</li>
+      <li>Assist the foreman in technical, housekeeping, and safety on daily operation</li>
+    </ol>
+    <h3>Job Requirements</h3>
+    <ol>
+      <li>Minimum SKM Certificate Level 3 in Automotive or equivalent. Diploma in Automotive is an added advantage</li>
+      <li>Minimum 1 year of working experience as a technician in automotive repairs industry</li>
+      <li>Basic reading and writing skills in English & Malay</li>
+      <li>Basic computer skills</li>
+      <li>Valid class D driving license</li>
+    </ol>
+  </div>
+
+  <!-- Service Consultant -->
+  <div class="career-section">
+    <h2>Service Consultant</h2>
+    <p>Lead your own future in Sales with Honda. Be trained by industry professionals on products and soft skills. Meet and greet prospective customers, invite them for test drives, and close sales.</p>
+    <h3>Job Descriptions</h3>
+    <ol>
+      <li>Close sales using consultative approach</li>
+      <li>Provide impartial advice</li>
+      <li>Deliver and maintain quality service</li>
+      <li>Develop product knowledge</li>
+      <li>Deliver individual and team sales targets</li>
+      <li>Participate in sales activities, events, and roadshows</li>
+      <li>Manage delivery process of new cars</li>
+      <li>Salary: Commission Basis</li>
+    </ol>
+    <h3>Job Requirements</h3>
+    <ol>
+      <li>Higher Secondary/ STPM/ "A" Level/ Diploma or equivalent</li>
+      <li>Sales & automotive experience an advantage</li>
+      <li>Proficient in English & Bahasa Malaysia</li>
+      <li>Self-motivated, target-driven, passionate</li>
+      <li>Valid class D driving license & own transport</li>
+    </ol>
+  </div>
+
+  <!-- Cashier -->
+  <div class="career-section">
+    <h2>Cashier</h2>
+    <h3>Job Descriptions</h3>
+    <ol>
+      <li>Greet customers and handle cash, credit, QR-pay, or online transactions</li>
+      <li>Ensure invoice pricing is correct</li>
+      <li>Issue change, receipts, or gate pass</li>
+      <li>Handle SAP invoice, redeem vouchers, count money, sell merchandise, bag items, maintain checkout cleanliness, keep transaction reports, answer customer questions</li>
+    </ol>
+    <h3>Job Requirements</h3>
+    <ol>
+      <li>Minimum Diploma in Accounting/Business Administration with CGPA ≥2.80</li>
+      <li>Good personality and communication skills in Malay & English</li>
+      <li>Discipline, work ethics, integrity, multitasking, cheerful, energetic, self-motivated, team player</li>
+      <li>Able to start work immediately</li>
+    </ol>
+  </div>
+
+  <!-- Parts Controller / Insurance Admin -->
+  <div class="career-section">
+    <h2> Insurance Admin</h2>
+    <h3>Job Descriptions</h3>
+    <ol>
+      <li>Open quotation for renewal Honda / Non Honda cars</li>
+      <li>Assist customer by call & counter</li>
+      <li>Generate cover note insurance</li>
+      <li>Process roadtax renewal</li>
+      <li>Sales for motor insurance, personal target</li>
+      <li>After service renewal - endorsement, claim etc</li>
+    </ol>
+    <h3>Job Requirements</h3>
+    <ol>
+      <li>Diploma in Insurance / Business Administration or equivalent</li>
+      <li>Good command in English and Bahasa Malaysia</li>
+      <li>Proficient in Microsoft Excel</li>
+    </ol>
+  </div>
+
+  <!-- Facilities Assistant -->
+  <div class="career-section">
+    <h2>Facilities Assistant</h2>
+    <h3>Job Descriptions</h3>
+    <ol>
+      <li>Handle office maintenance and administrative support services</li>
+      <li>Coordinate maintenance, troubleshooting, checks and controls on electrical and mechanical appliances</li>
+      <li>Supervise office/building cleanliness and update checklist daily</li>
+    </ol>
+    <h3>Job Requirements</h3>
+    <ol>
+      <li>Diploma in Air-Conditioning / Electrical / Building Services with 1 year servicing experience (Fresh Grad welcome)</li>
+      <li>Competent in Microsoft Office</li>
+      <li>Valid class D driving license</li>
+      <li>Willing to work long hours or on rest day</li>
+    </ol>
+  </div>
+
+  <!-- Marketing / IT Executive -->
+  <div class="career-section">
+    <h2> IT Executive</h2>
+    <p>Responsible for maintaining the company's IT network, servers, computers, applications, and security systems at both branches.</p>
+    <h3>Key Duties</h3>
+    <ol>
+      <li>Maintain server operations, OS updates, backups, and data security</li>
+      <li>Ensure internet access and WIFI coverage</li>
+      <li>Maintain availability of IT hardware/software</li>
+      <li>Handle documentation, contractor arrangement, PC leasing/purchasing</li>
+      <li>Research new technology enhancement</li>
+    </ol>
+  </div>
+
+  <!-- Foreman -->
+  <div class="career-section">
+    <h2>Foreman</h2>
+    <p>Lead a team of technicians, monitor service targets, and assist team members with troubleshooting.</p>
+    <h3>Job Requirements</h3>
+    <ol>
+      <li>SKM Level 3 / SPM or higher</li>
+      <li>Experience in auto industry</li>
+      <li>Fluent in English & Malay</li>
+      <li>Valid driving license</li>
+    </ol>
+  </div>
+
+  <!-- Job Controller -->
+  <div class="career-section">
+    <h2>Job Controller</h2>
+    <p>Manage workflow and job allocation, similar to service coordination.</p>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © Honda Global Amity 2026. All Rights Reserved.
+</footer>
+
+<script>
+// HEADER SCROLL
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// SCROLL REVEAL
+const sections = document.querySelectorAll('section');
+const revealElements = () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.style.opacity = 1;
+      sec.style.transform = 'translateY(0)';
+    }
+  });
+};
+window.addEventListener('scroll', revealElements);
+window.addEventListener('load', revealElements);
+</script>
+
+</body>
+</html>

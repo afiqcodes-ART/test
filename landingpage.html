@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rate Our Service | Honda Global Amity</title>
+
+<style>
+:root{
+  --honda-red:#e60012;
+  --text:#222;
+  --bg:#f9f9f9;
+}
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Helvetica Neue",Arial,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:var(--text);
+}
+
+/* ================= CONTAINER ================= */
+.rate-container{
+  background:#fff;
+  width:90%;
+  max-width:420px;
+  padding:50px 40px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+  animation:fadeIn .8s ease;
+  position:relative;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+
+/* LOGO */
+.logo{
+  width:200px;
+  margin-bottom:-80px;
+}
+
+/* TITLE */
+h2{
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+h2::after{
+  content:"";
+  display:block;
+  width:70px;
+  height:4px;
+  background:var(--honda-red);
+  margin:12px auto 0;
+  border-radius:2px;
+}
+
+p{
+  font-size:14px;
+  margin:20px 0 30px;
+  color:#444;
+}
+
+/* ================= STARS ================= */
+.stars{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:30px;
+}
+
+.star{
+  font-size:42px;
+  color:#ccc;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.star:hover,
+.star.selected{
+  color:var(--honda-red);
+  transform:translateY(-4px);
+}
+
+/* ================= BUTTON ================= */
+button{
+  padding:14px 36px;
+  background:var(--honda-red);
+  color:#fff;
+  font-weight:600;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 6px 18px rgba(230,0,18,.4);
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  box-shadow:none;
+}
+
+button:hover:not(:disabled){
+  background:#b8000f;
+  transform:translateY(-2px);
+}
+
+.message{
+  margin-top:15px;
+  font-weight:600;
+}
+
+/* ================= POPUP ================= */
+.popup{
+  position:absolute;
+  inset:0;
+  background:#fff;
+  border-radius:16px;
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:40px;
+  box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+
+.popup h3{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.popup p{
+  margin-bottom:20px;
+}
+
+.popup textarea{
+  width:100%;
+  height:120px;
+  padding:14px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  resize:none;
+  margin-bottom:20px;
+}
+
+/* ================= THANK YOU ================= */
+.thank-you{
+  display:none;
+  animation:fadeIn .6s ease;
+}
+
+.thank-you h3{
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+footer{
+  margin-top:30px;
+  font-size:12px;
+  color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="rate-container">
+
+  <img src="logoglobal2.png" alt="Honda Global Amity" class="logo">
+
+  <h2>Rate Our Service</h2>
+  <p>Your feedback helps us improve our service experience.</p>
+
+  <div class="stars">
+    <span class="star" data-value="1">★</span>
+    <span class="star" data-value="2">★</span>
+    <span class="star" data-value="3">★</span>
+    <span class="star" data-value="4">★</span>
+    <span class="star" data-value="5">★</span>
+  </div>
+
+  <button id="submitBtn" disabled>Submit Rating</button>
+  <div class="message" id="message"></div>
+
+  <!-- POPUP -->
+  <div class="popup" id="popupForm">
+    <h3>We’re sorry to hear that</h3>
+    <p>Please share your feedback so we can improve.</p>
+    <textarea id="feedbackText" placeholder="Type your feedback here..."></textarea>
+    <button id="sendFeedback">Send Feedback</button>
+  </div>
+
+  <!-- THANK YOU -->
+  <div class="thank-you" id="thankYou">
+    <h3>Thank You!</h3>
+    <p>We appreciate your positive feedback.</p>
+  </div>
+
+  <footer>© 2026 Honda Global Amity</footer>
+
+</div>
+
+<script>
+const stars = document.querySelectorAll('.star');
+const message = document.getElementById('message');
+const button = document.getElementById('submitBtn');
+const popup = document.getElementById('popupForm');
+const thankYou = document.getElementById('thankYou');
+const feedbackText = document.getElementById('feedbackText');
+let selectedRating = 0;
+
+stars.forEach((star, index) => {
+  star.addEventListener('click', () => {
+    selectedRating = index + 1;
+    stars.forEach(s => s.classList.remove('selected'));
+    for(let i=0;i<selectedRating;i++){
+      stars[i].classList.add('selected');
+    }
+    message.textContent = `You rated us ${selectedRating} star${selectedRating>1?'s':''}.`;
+    button.disabled = false;
+  });
+});
+
+button.addEventListener('click', () => {
+  if(selectedRating <= 3){
+    popup.style.display = "flex";
+  }else{
+    thankYou.style.display = "block";
+    setTimeout(() => {
+      window.open("https://www.google.com/search?sca_esv=02d96f4dae5a5963&rlz=1C1CHBD_enMY936MY937&sxsrf=ANbL-n6zBRRvlbw3bhFvLC1IQpv4lDG5gQ:1769676021238&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOUWxrLL9jpE21Q-3bAuZMf1y6g9MuL1tF-tMt_6z1gRJGfymSFnZR-61W41mN2-9Qen84bo84EtuQBDewXS6tKW-pNZiV_c59Xkm3SeS_w5mXlRuUvMP_CN6CGQzvc8o0RvEfV0%3D&q=Honda+Global+Amity+Bangi+3S+Center+Ulasan&sa=X&ved=2ahUKEwiL6fP0rLCSAxXyxDgGHRlBOHYQ0bkNegQIHRAH&biw=1366&bih=641&dpr=1&aic=0#lrd=0x31cdca2cbfe651a1:0xc736d75e0a4b6fa6,3,,,,","_blank");
+    },1500);
+  }
+});
+
+document.getElementById('sendFeedback').addEventListener('click', () => {
+  const phone = "60123456789";
+  const text = encodeURIComponent(
+    `Honda Global Amity Feedback:\nRating: ${selectedRating}\nComment: ${feedbackText.value}`
+  );
+  window.open(`https://wa.me/${phone}?text=${text}`,"_blank");
+  popup.style.display="none";
+  message.textContent="Thank you for your feedback.";
+});
+</script>
+
+</body>
+</html>

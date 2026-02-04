@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drive A Honda Today</title>
+
+<style>
+:root{
+  --honda-red:#e60012;
+  --white:#fff;
+  --dark:#0f0f0f;
+  --text:#222;
+  --max-width:1320px;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Helvetica Neue",Arial,sans-serif}
+body{background:#fff;color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* ================= HEADER ================= */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,0.95);
+  border-bottom:1px solid #e6e6e6;
+  padding:2px 24px;
+  transition:background .3s, box-shadow .3s, backdrop-filter .3s;
+}
+header.scrolled{
+  background:rgba(255,255,255,0.2);
+  box-shadow:0 2px 12px rgba(0,0,0,.1);
+  backdrop-filter:blur(6px);
+}
+
+/* NAV */
+.nav{max-width:var(--max-width);margin:auto;display:flex;align-items:center;justify-content:space-between}
+.logo img{height:150px; width:150px;}
+.menu{display:flex;justify-content:center;gap:36px;font-size:14px;font-weight:600;letter-spacing:.5px;flex:1}
+.menu a{position:relative;padding:5px 0;color:var(--dark)}
+.menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:3px;background:var(--honda-red);transition:.3s}
+.menu a:hover::after{width:100%}
+
+/* ================= CONTENT ================= */
+.container{max-width:1100px;margin:80px auto;padding:0 20px;text-align:center}
+.title{font-size:42px;font-weight:800;margin-bottom:30px}
+.car-image{width:100%;height:380px;border-radius:14px;background:url("car-landscape.jpg") center/cover no-repeat;box-shadow:0 10px 30px rgba(0,0,0,.25);margin-bottom:50px}
+
+/* ================= FORM ================= */
+.form-box{background:#fff;padding:40px;border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.15);text-align:left}
+.form-group{margin-bottom:22px}
+label{font-weight:700;display:block;margin-bottom:8px}
+label span{color:var(--honda-red)}
+input, select{width:100%;padding:14px;border-radius:8px;border:1px solid #ccc;font-size:15px}
+input:focus, select:focus{outline:none;border-color:var(--honda-red)}
+.phone-group{display:flex;gap:10px}
+.phone-group select{width:30%}
+.phone-group input{width:70%}
+.btn-submit{width:100%;padding:16px;background:var(--honda-red);border:none;border-radius:8px;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.btn-submit:hover{background:#b8000f}
+
+/* ================= FOOTER ================= */
+footer{background:#000;color:#fff;text-align:center;padding:20px;font-weight:700;font-size:14px;letter-spacing:.5px;margin-top:80px}
+
+/* ================= MODAL ================= */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;justify-content:center;align-items:center;z-index:2000}
+.modal-content{background:#fff;padding:40px;border-radius:16px;max-width:400px;text-align:center;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.modal-content h3{font-size:22px;margin-bottom:20px}
+.modal-close{position:absolute;top:12px;right:12px;font-size:18px;font-weight:700;cursor:pointer;color:#333}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  .menu{display:none}
+  .phone-group{flex-direction:column}
+  .phone-group select,input{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav">
+    <div class="logo"><img src="logoglobal.png" alt="Honda Global Amity"></div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+     <a href="models.html">Models</a>
+      <a href="service-maintenance.html">Service & Maintenance</a>
+      <a href="https://www.honda.com.my/discover/honda-insurance-plus" target="_blank">Insurance</a>
+      <a href="career.html">Career</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="https://www.honda.com.my/happenings" target="_blank">Happenings</a>
+       <a href="file:///C:/Users/Lenovo/Documents/honda/landingpage.html" target="_blank">Review Us</a>
+
+    </nav>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<div class="container">
+  <div class="title">DRIVE A HONDA TODAY !</div>
+
+  <section class="car-image-container">
+    <img src="Drivehonda.PNG" alt="Honda Car">
+  </section>
+
+  <div class="form-box">
+    <form id="hondaForm">
+      <div class="form-group">
+        <label>Full Name <span>*</span></label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number <span>*</span></label>
+        <div class="phone-group">
+          <select required>
+            <option value="">Country</option>
+            <option>+60 (MY)</option>
+            <option>+65 (SG)</option>
+            <option>+62 (ID)</option>
+          </select>
+          <input type="tel" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>I’m Interested In Model <span>*</span></label>
+        <select required>
+          <option value="">Select Model</option>
+          <option>Civic</option>
+          <option>HR-V</option>
+          <option>WR-V</option>
+          <option>City</option>
+          <option>City Hatchback</option>
+          <option>CR-V</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>I Prefer Honda Dealership Branch <span>*</span></label>
+        <select required>
+          <option value="">Select Branch</option>
+          <option>Honda Global Amity Bangi</option>
+          <option>Honda Global Amity Nilai</option>
+        </select>
+      </div>
+
+      <button class="btn-submit" type="submit">SUBMIT</button>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="thankYouModal">
+  <div class="modal-content">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <h3>Terima kasih kerana menyokong kami!</h3>
+    <p>Kami akan hubungi anda sebentar lagi.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>© Honda Global Amity 2026. All Rights Reserved.</footer>
+
+<script>
+// Header scroll effect
+const header = document.querySelector("header");
+window.addEventListener("scroll", ()=>{header.classList.toggle("scrolled", window.scrollY>50)});
+
+// Modal popup
+const form = document.getElementById("hondaForm");
+const modal = document.getElementById("thankYouModal");
+const closeModal = document.getElementById("closeModal");
+
+form.addEventListener("submit", e=>{
+  e.preventDefault();
+  modal.style.display = "flex";
+  form.reset();
+});
+
+closeModal.addEventListener("click", ()=> modal.style.display="none");
+window.addEventListener("click", e=> {if(e.target==modal) modal.style.display="none"});
+</script>
+
+</body>
+</html>
